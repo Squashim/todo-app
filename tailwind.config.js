@@ -12,7 +12,7 @@ module.exports = {
 				lightGray300: "hsl(233, 11%, 84%)",
 				lightGray400: "hsl(236, 9%, 61%)",
 				lightGray500: "hsl(235, 19%, 35%)",
-				darkGray100: "hsl(235, 21%, 11%)",
+				darkGrayBg: "hsl(235, 21%, 11%)",
 				darkGray200: "hsl(235, 24%, 19%)",
 				darkGray300: "hsl(234, 39%, 85%)",
 				darkGray300Hover: "hsl(236, 33%, 92%)",

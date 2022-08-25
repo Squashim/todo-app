@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import sun from "../assets/icon-sun.svg";
 import moon from "../assets/icon-moon.svg";
 
-export const ThemeChanger = ({ mode }) => {
+export const ThemeChanger = () => {
 	const [mode, setMode] = useState(true);
 	const toggleDarkMode = () => {
 		if (mode) {
