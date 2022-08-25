@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import sun from "../assets/icon-sun.svg";
 import moon from "../assets/icon-moon.svg";
 
-export const ThemeChanger = () => {
-	const [mode, setMode] = useState(true);
+export const ThemeChanger = ({ mode, setMode }) => {
 	const toggleDarkMode = () => {
 		if (mode) {
 			document.documentElement.classList.add("dark");
