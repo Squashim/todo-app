@@ -24,7 +24,9 @@ function App() {
 				{/* Todos list */}
 				<div className='flex flex-col justify-center w-full  h-full '>
 					<div className='flex items-center h-full max-h-[50px] dark:bg-darkGrayTodoBg px-6  '>
-						<div className='cursor-pointer w-[20px] h-[20px]  my-auto  rounded-full border-[1px] dark:border-darkElements  mr-4 border-gradient-tr-blue- gradient-border-1'></div>
+						<div
+							className='cursor-pointer w-[20px] h-[20px] relative my-auto  rounded-[10px] border-[1px]dark:border-darkElements  mr-4 dark:bg-darkElements hover:bg-gradient-to-br from-gradientFrom to-gradientTo
+						before:content-[""] before:w-[calc(100%-2px)] before:h-[calc(100%-2px)] before:absolute   before:top-[1px] before:left-[1px] before:bg-darkGrayTodoBg box-border before:rounded-[9px]'></div>
 
 						<p className='text-sm my-auto dark:text-darkGrayText'>
 							Complete online JavaScript course

@@ -6,7 +6,8 @@ module.exports = {
 		extend: {
 			colors: {
 				primary: "hsl(220, 98%, 61%)",
-				checkBg: "linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%))",
+				gradientFrom: "hsl(192, 100%, 67%)",
+				gradientTo: "hsl(280, 87%, 65%)",
 
 				lightGray100: "hsl(0, 0%, 98%)",
 				lightGray200: "hsl(236, 33%, 92%)",
@@ -26,13 +27,7 @@ module.exports = {
 				darkGray500: "hsl(233, 14%, 35%)",
 				darkGray600: "hsl(237, 14%, 26%)",
 			},
-			linearBorderGradients: ({ theme }) => ({
-				colors: {
-					blue: ["hsl(192, 100%, 67%)", "hsl(280, 87%, 65%)"],
-				},
-				background: theme("colors"),
-			}),
 		},
 	},
-	plugins: [require("tailwindcss-border-gradient-radius")],
+	plugins: [],
 };
