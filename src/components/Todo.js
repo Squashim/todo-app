@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import close from "../assets/icon-cross.svg";
 import check from "../assets/icon-check.svg";
-import TodoForm from "./TodoForm";
 
 const Todo = ({ todos, completeTodo, removeTodo }) => {
 	return todos.map((todo, index) => (
