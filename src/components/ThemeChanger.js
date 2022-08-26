@@ -14,7 +14,9 @@ export const ThemeChanger = ({ mode, setMode }) => {
 		}
 	};
 	return (
-		<div className='' onClick={() => toggleDarkMode()}>
+		<div
+			className='cursor-pointer hover:scale-110 duration-100 ease'
+			onClick={() => toggleDarkMode()}>
 			{mode ? <img src={sun} alt='' /> : <img src={moon} alt='' />}
 		</div>
 	);
