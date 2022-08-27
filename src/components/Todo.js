@@ -2,8 +2,8 @@ import React from "react";
 import close from "../assets/icon-cross.svg";
 import check from "../assets/icon-check.svg";
 
-const Todo = ({ todos, completeTodo, removeTodo }) => {
-	return todos.map((todo, index) => (
+const Todo = ({ todos, completeTodo, removeTodo, filter, FILTER_MAP }) => {
+	return todos.filter(FILTER_MAP[filter]).map((todo, index) => (
 		<div
 			key={index}
 			className='flex items-center h-full min-h-[50px] bg-lightGray100 dark:bg-darkGrayTodoBg px-4 border-b border-b-lightGray300 dark:border-b-darkInputText w-full first:rounded-t-md'>
