@@ -53,7 +53,7 @@ const TodoList = () => {
 
 	return (
 		<>
-			<div className='w-full flex flex-col p-6 items-center mt-[-115px]'>
+			<div className='max-w-[550px] mx-auto w-full flex flex-col p-6 items-center mt-[-115px] '>
 				<TodoForm onSubmit={addTodo} />
 				<div className='w-full h-full'>
 					<Todo
@@ -64,7 +64,7 @@ const TodoList = () => {
 						FILTER_MAP={FILTER_MAP}
 					/>
 					<div className='dark:shadow-black/50 shadow-xl flex items-center h-full min-h-[50px] bg-lightGray100 dark:bg-darkGrayTodoBg px-4 w-full rounded-b-md'>
-						<div className='text-xs text-lightGray400 dark:text-darkInputText flex items-center justify-between w-full'>
+						<div className='sm:text-base text-xs text-lightGray400 dark:text-darkInputText flex items-center justify-between w-full'>
 							<p>{todos.filter(FILTER_MAP[filter]).length} items left</p>
 							<p
 								onClick={clearCompleted}
@@ -75,11 +75,11 @@ const TodoList = () => {
 					</div>
 				</div>
 
-				<div className='dark:shadow-black/50 shadow-2xl min-h-[50px] mt-4 justify-center w-full flex items-center bg-lightGray100 dark:bg-darkGrayTodoBg px-4 rounded-md gap-3'>
+				<div className='dark:shadow-black/50 shadow-2xl min-h-[50px] mt-4 justify-center w-full flex items-center bg-lightGray100 dark:bg-darkGrayTodoBg px-4 rounded-md gap-3 '>
 					{filterList}
 				</div>
 
-				<p className='px-4 w-full text-center text-sm dark:text-darkInputText text-lightGray400 mt-10'>
+				<p className='px-4 w-full text-center sm:text-base text-sm dark:text-darkInputText text-lightGray400 mt-10'>
 					Drag and drop to reorder list
 				</p>
 			</div>

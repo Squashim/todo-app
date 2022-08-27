@@ -28,7 +28,7 @@ const TodoForm = (props) => {
 					onChange={handleChange}
 					value={input}
 					placeholder='Create a new todo...'
-					className=' w-full caret-primary bg-transparent text-sm dark:text-darkGrayText  text-lightGray500 placeholder:text-lightGray400 dark:placeholder:text-darkInputText border-none outline-none'
+					className='sm:text-base placeholder:sm:text-base w-full caret-primary bg-transparent text-sm dark:text-darkGrayText  text-lightGray500 placeholder:text-lightGray400 dark:placeholder:text-darkInputText border-none outline-none'
 				/>
 			</form>
 		</div>

@@ -26,8 +26,8 @@ const Todo = ({ todos, completeTodo, removeTodo, filter, FILTER_MAP }) => {
 				<div
 					className={
 						todo.isComplete
-							? "text-xs my-auto text-lightGray300 decoration-lightGray400 line-through dark:text-darkGray500 dark:decoration-darkGray400"
-							: "cursor-pointer text-xs my-auto text-lightGray500 dark:text-darkGrayText"
+							? "sm:text-base text-xs my-auto text-lightGray300 decoration-lightGray400 line-through dark:text-darkGray500 dark:decoration-darkGray400"
+							: "sm:text-base cursor-pointer text-xs my-auto text-lightGray500 dark:text-darkGrayText"
 					}>
 					{todo.text}
 				</div>

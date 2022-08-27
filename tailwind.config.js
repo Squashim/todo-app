@@ -4,6 +4,9 @@ module.exports = {
 	darkMode: "class",
 	theme: {
 		extend: {
+			screens: {
+				desktop: "425px",
+			},
 			colors: {
 				primary: "hsl(220, 98%, 61%)",
 				gradientFrom: "hsl(192, 100%, 67%)",
