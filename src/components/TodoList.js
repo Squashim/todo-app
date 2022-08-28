@@ -20,8 +20,13 @@ const TodoList = () => {
 			return;
 		}
 		const newTodos = [todo, ...todos];
+		localStorage.setItem("todos", JSON.stringify(newTodos));
 		setTodos(newTodos);
 	};
+
+	useEffect(() => {
+		setTodos(JSON.parse(localStorage.getItem("todos")));
+	}, []);
 
 	const completeTodo = (id) => {
 		let updatedTodos = todos.map((todo) => {
@@ -31,16 +36,19 @@ const TodoList = () => {
 			return todo;
 		});
 		setTodos(updatedTodos);
+		localStorage.setItem("todos", JSON.stringify(updatedTodos));
 	};
 
 	const removeTodo = (id) => {
 		const removedArr = [...todos].filter((todo) => todo.id !== id);
 		setTodos(removedArr);
+		localStorage.setItem("todos", JSON.stringify(removedArr));
 	};
 
 	const clearCompleted = () => {
 		const removedArr = [...todos].filter((todo) => todo.isComplete !== true);
 		setTodos(removedArr);
+		localStorage.setItem("todos", JSON.stringify(removedArr));
 	};
 
 	const filterList = FILTER_NAMES.map((name) => (
