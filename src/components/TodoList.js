@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FilterButton from "./FilterButton";
+import Placeholder from "./Placeholder";
 import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
@@ -52,10 +53,15 @@ const TodoList = () => {
 	));
 
 	return (
-		<>
-			<div className='max-w-[550px] mx-auto w-full flex flex-col p-6 items-center mt-[-115px] '>
-				<TodoForm onSubmit={addTodo} />
-				<div className='w-full h-full'>
+		<div className='max-w-[550px] mx-auto w-full flex flex-col p-6 items-center mt-[-115px] '>
+			{/* Todos input */}
+			<TodoForm onSubmit={addTodo} />
+
+			{/* Todos list */}
+			<div className='w-full h-full'>
+				{todos.filter(FILTER_MAP[filter]).length === 0 ? (
+					<Placeholder filter={filter} />
+				) : (
 					<Todo
 						filter={filter}
 						todos={todos}
@@ -63,27 +69,34 @@ const TodoList = () => {
 						removeTodo={removeTodo}
 						FILTER_MAP={FILTER_MAP}
 					/>
-					<div className='dark:shadow-black/50 shadow-xl flex items-center h-full min-h-[50px] bg-lightGray100 dark:bg-darkGrayTodoBg px-4 w-full rounded-b-md'>
-						<div className='sm:text-base text-xs text-lightGray400 dark:text-darkInputText flex items-center justify-between w-full'>
-							<p>{todos.filter(FILTER_MAP[filter]).length} items left</p>
-							<p
-								onClick={clearCompleted}
-								className='cursor-pointer hover:dark:text-darkGray300Hover hover:text-lightGray500'>
-								Clear Completed
-							</p>
-						</div>
+				)}
+
+				{/* Todos info */}
+				<div className='dark:shadow-black/50 shadow-xl flex items-center h-full min-h-[50px] bg-lightGray100 dark:bg-darkGrayTodoBg px-4 w-full rounded-b-md'>
+					<div className='sm:text-lg text-xs text-lightGray400 dark:text-darkInputText flex items-center justify-between w-full'>
+						<p>
+							{todos.filter(FILTER_MAP[filter]).length === 0
+								? "No items left"
+								: `${todos.filter(FILTER_MAP[filter]).length} items left`}
+						</p>
+						<p
+							onClick={clearCompleted}
+							className='cursor-pointer hover:dark:text-darkGray300Hover hover:text-lightGray500'>
+							Clear Completed
+						</p>
 					</div>
 				</div>
-
-				<div className='dark:shadow-black/50 shadow-2xl min-h-[50px] mt-4 justify-center w-full flex items-center bg-lightGray100 dark:bg-darkGrayTodoBg px-4 rounded-md gap-3 '>
-					{filterList}
-				</div>
-
-				<p className='px-4 w-full text-center sm:text-base text-sm dark:text-darkInputText text-lightGray400 mt-10'>
-					Drag and drop to reorder list
-				</p>
 			</div>
-		</>
+
+			{/* Filter buttons */}
+			<div className='dark:shadow-black/50 shadow-2xl min-h-[50px] mt-4 justify-center w-full flex items-center bg-lightGray100 dark:bg-darkGrayTodoBg px-4 rounded-md gap-3 '>
+				{filterList}
+			</div>
+
+			<p className='px-4 w-full text-center sm:text-base text-sm dark:text-darkInputText text-lightGray400 mt-10'>
+				Drag and drop to reorder list
+			</p>
+		</div>
 	);
 };
 

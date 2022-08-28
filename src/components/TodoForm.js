@@ -18,7 +18,7 @@ const TodoForm = (props) => {
 		setInput("");
 	};
 	return (
-		<div className='flex items-center w-full min-h-[50px] mb-4 h-full bg-lightGray100 dark:bg-darkGrayTodoBg rounded-md px-4'>
+		<div className=' flex items-center w-full min-h-[50px] mb-4 h-full bg-lightGray100 dark:bg-darkGrayTodoBg rounded-md px-4'>
 			<div className='min-w-[20px] min-h-[20px] rounded-full border-[1px] border-lightGray300 dark:border-darkElements mr-4'></div>
 			<form onSubmit={handleSubmit} className='w-full'>
 				<input
@@ -28,7 +28,7 @@ const TodoForm = (props) => {
 					onChange={handleChange}
 					value={input}
 					placeholder='Create a new todo...'
-					className='sm:text-base placeholder:sm:text-base w-full caret-primary bg-transparent text-sm dark:text-darkGrayText  text-lightGray500 placeholder:text-lightGray400 dark:placeholder:text-darkInputText border-none outline-none'
+					className='sm:text-lg placeholder:sm:text-lg w-full caret-primary bg-transparent text-sm dark:text-darkGrayText  text-lightGray500 placeholder:text-lightGray400 dark:placeholder:text-darkInputText border-none outline-none'
 				/>
 			</form>
 		</div>

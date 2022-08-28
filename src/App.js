@@ -5,7 +5,7 @@ import TodoList from "./components/TodoList";
 
 function App() {
 	return (
-		<div className='scroll-smooth w-full h-screen dark:bg-darkGrayBg bg-lightGray200 overflow-y-scroll'>
+		<div className='transition-all duration-500 ease scroll-smooth w-full h-screen dark:bg-darkGrayBg bg-lightGray200 overflow-y-scroll'>
 			<Header />
 			<TodoList />
 			<Footer />
