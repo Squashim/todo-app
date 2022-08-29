@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import FilterButton from "./FilterButton";
 import Placeholder from "./Placeholder";
 import Todo from "./Todo";
@@ -13,7 +13,13 @@ const FILTER_MAP = {
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 const TodoList = () => {
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState(() => {
+		const saved = localStorage.getItem("todos");
+		if (saved) {
+			return JSON.parse(saved);
+		} else return [];
+	});
+	const [activeTodos, setActiveTodos] = useState(todos);
 	const [filter, setFilter] = useState("all");
 
 	const addTodo = (todo) => {
@@ -24,10 +30,6 @@ const TodoList = () => {
 		localStorage.setItem("todos", JSON.stringify(newTodos));
 		setTodos(newTodos);
 	};
-
-	useEffect(() => {
-		setTodos(JSON.parse(localStorage.getItem("todos")));
-	}, []);
 
 	const completeTodo = (id) => {
 		let updatedTodos = todos.map((todo) => {
@@ -65,11 +67,18 @@ const TodoList = () => {
 	const handleOnDragEnd = (result) => {
 		if (!result.destination) return;
 		const list = [...todos];
+		const filteredList = [...todos].filter(FILTER_MAP[filter]);
 		const [reorderedList] = list.splice(result.source.index, 1);
-		console.log(list);
+		const [reorderedFilteredList] = filteredList.splice(result.source.index, 1);
 		list.splice(result.destination.index, 0, reorderedList);
-
-		setTodos(list);
+		filteredList.splice(result.destination.index, 0, reorderedFilteredList);
+		if (filter !== "all") {
+			setActiveTodos(list);
+			setTodos(filteredList);
+		} else {
+			setTodos(list);
+			setActiveTodos(filteredList);
+		}
 	};
 
 	return (
