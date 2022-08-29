@@ -22,7 +22,7 @@ const TodoForm = (props) => {
 			<div className='min-w-[20px] min-h-[20px] rounded-full border-[1px] border-lightGray300 dark:border-darkElements mr-4'></div>
 			<form onSubmit={handleSubmit} className='w-full'>
 				<input
-					max='30'
+					maxLength={30}
 					type='text'
 					name='text'
 					onChange={handleChange}

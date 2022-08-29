@@ -63,7 +63,7 @@ const TodoList = () => {
 	};
 
 	return (
-		<div className='max-w-[550px] mx-auto w-full flex flex-col p-6 items-center mt-[-115px] '>
+		<main className='max-w-[550px] mx-auto w-full flex flex-col p-6 items-center mt-[-115px] '>
 			{/* Todos input */}
 			<TodoForm onSubmit={addTodo} />
 
@@ -116,7 +116,7 @@ const TodoList = () => {
 			<p className='px-4 w-full text-center sm:text-base text-sm dark:text-darkInputText text-lightGray400 mt-10'>
 				Drag and drop to reorder list
 			</p>
-		</div>
+		</main>
 	);
 };
 

@@ -5,7 +5,7 @@ const Header = () => {
 	const [mode, setMode] = useState(true);
 
 	return (
-		<div
+		<header
 			className={
 				mode
 					? 'transition-all duration-500 ease w-full h-[200px] desktop:bg-[url("./assets/bg-desktop-light.jpg")] bg-[url("./assets/bg-mobile-light.jpg")] bg-no-repeat bg-center bg-cover'
@@ -17,7 +17,7 @@ const Header = () => {
 				</h1>
 				<ThemeChanger mode={mode} setMode={setMode} />
 			</div>
-		</div>
+		</header>
 	);
 };
 
