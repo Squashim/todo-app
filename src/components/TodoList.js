@@ -13,13 +13,7 @@ const FILTER_MAP = {
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 const TodoList = () => {
-	const [todos, setTodos] = useState(() => {
-		const saved = localStorage.getItem("todos");
-		if (saved) {
-			return JSON.parse(saved);
-		} else return [];
-	});
-	const [activeTodos, setActiveTodos] = useState(todos);
+	const [todos, setTodos] = useState([]);
 	const [filter, setFilter] = useState("all");
 
 	const addTodo = (todo) => {
@@ -27,7 +21,7 @@ const TodoList = () => {
 			return;
 		}
 		const newTodos = [todo, ...todos];
-		localStorage.setItem("todos", JSON.stringify(newTodos));
+
 		setTodos(newTodos);
 	};
 
@@ -39,20 +33,16 @@ const TodoList = () => {
 			return todo;
 		});
 		setTodos(updatedTodos);
-		localStorage.setItem("todos", JSON.stringify(updatedTodos));
 	};
 
 	const removeTodo = (id) => {
 		const removedArr = [...todos].filter((todo) => todo.id !== id);
-
 		setTodos(removedArr);
-		localStorage.setItem("todos", JSON.stringify(removedArr));
 	};
 
 	const clearCompleted = () => {
 		const removedArr = [...todos].filter((todo) => todo.isComplete !== true);
 		setTodos(removedArr);
-		localStorage.setItem("todos", JSON.stringify(removedArr));
 	};
 
 	const filterList = FILTER_NAMES.map((name) => (
@@ -67,18 +57,9 @@ const TodoList = () => {
 	const handleOnDragEnd = (result) => {
 		if (!result.destination) return;
 		const list = [...todos];
-		const filteredList = [...todos].filter(FILTER_MAP[filter]);
 		const [reorderedList] = list.splice(result.source.index, 1);
-		const [reorderedFilteredList] = filteredList.splice(result.source.index, 1);
 		list.splice(result.destination.index, 0, reorderedList);
-		filteredList.splice(result.destination.index, 0, reorderedFilteredList);
-		if (filter !== "all") {
-			setActiveTodos(list);
-			setTodos(filteredList);
-		} else {
-			setTodos(list);
-			setActiveTodos(filteredList);
-		}
+		setTodos(list);
 	};
 
 	return (
