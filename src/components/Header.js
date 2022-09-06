@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ThemeChanger from "./ThemeChanger";
 
 const Header = ({ theme, setTheme }) => {

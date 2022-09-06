@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import TodoList from "../components/TodoList";
+import Main from "../components/Main";
 
 const Home = () => {
 	const [theme, setTheme] = useState(
@@ -11,15 +11,17 @@ const Home = () => {
 	useEffect(() => {
 		if (theme === "light-theme") {
 			document.body.classList.add("light-theme");
+			document.body.classList.remove("dark-theme");
 		} else {
 			document.body.classList.add("dark-theme");
+			document.body.classList.remove("light-theme");
 		}
 	}, [theme]);
 
 	return (
 		<>
 			<Header theme={theme} setTheme={setTheme} />
-			<TodoList />
+			<Main />
 			<Footer />
 		</>
 	);

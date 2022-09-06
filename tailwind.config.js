@@ -15,6 +15,7 @@ module.exports = {
 				bgMain: "var(--bg-main)",
 				bgTodo: "var(--bg-todo)",
 				textColor: "var(--text)",
+				secondaryTextColor: "var(--secondaryText)",
 				hoverColor: "var(--hover)",
 				elementsColor: "var(--elements)",
 				shadowColor: "var(--shadow)",

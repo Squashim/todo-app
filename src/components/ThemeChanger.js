@@ -1,7 +1,6 @@
 import React from "react";
 import sun from "../assets/icon-sun.svg";
 import moon from "../assets/icon-moon.svg";
-import { useEffect } from "react";
 
 export const ThemeChanger = ({ theme, setTheme }) => {
 	const toggleDarkMode = () => {

@@ -3,8 +3,8 @@ import close from "../assets/icon-cross.svg";
 import check from "../assets/icon-check.svg";
 import { Draggable } from "react-beautiful-dnd";
 
-const Todo = ({ todos, completeTodo, removeTodo, filter, FILTER_MAP }) => {
-	return todos.filter(FILTER_MAP[filter]).map((todo, index) => (
+const Todo = ({ todos, completeTodo, removeTodo }) => {
+	return todos.map((todo, index) => (
 		<Draggable key={todo.id} draggableId={todo.id.toString()} index={index}>
 			{(provided) => (
 				<div
@@ -21,7 +21,7 @@ const Todo = ({ todos, completeTodo, removeTodo, filter, FILTER_MAP }) => {
 							className={
 								todo.isCompleted
 									? "min-w-[22px] min-h-[22px] flex items-center justify-center rounded-full bg-gradient-to-br from-gradientFrom to-gradientTo mr-4"
-									: "flex items-center justify-center rounded-full cursor-pointer min-w-[22px] min-h-[22px] mr-4 bg-bgTodo hover:bg-gradient-to-br from-gradientFrom to-gradientTo"
+									: "flex items-center justify-center rounded-full cursor-pointer min-w-[22px] min-h-[22px] mr-4 bg-elementsColor hover:bg-gradient-to-br from-gradientFrom to-gradientTo"
 							}>
 							{todo.isCompleted ? (
 								<img src={check} alt='' />
