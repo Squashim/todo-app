@@ -1,23 +1,27 @@
 import React from "react";
 import sun from "../assets/icon-sun.svg";
 import moon from "../assets/icon-moon.svg";
+import { useEffect } from "react";
 
-export const ThemeChanger = ({ mode, setMode }) => {
+export const ThemeChanger = ({ theme, setTheme }) => {
 	const toggleDarkMode = () => {
-		if (mode) {
-			document.documentElement.classList.add("dark");
-			setMode((current) => (current = !current));
-		}
-		if (!mode) {
-			document.documentElement.classList.remove("dark");
-			setMode((current) => (current = !current));
+		if (theme === "light-theme") {
+			localStorage.setItem("theme", "dark-theme");
+			setTheme("dark-theme");
+		} else {
+			localStorage.setItem("theme", "light-theme");
+			setTheme("light-theme");
 		}
 	};
 	return (
 		<div
 			className='cursor-pointer hover:scale-110 duration-100 ease'
 			onClick={() => toggleDarkMode()}>
-			{!mode ? <img src={sun} alt='' /> : <img src={moon} alt='' />}
+			{theme === "dark-theme" ? (
+				<img src={sun} alt='' />
+			) : (
+				<img src={moon} alt='' />
+			)}
 		</div>
 	);
 };

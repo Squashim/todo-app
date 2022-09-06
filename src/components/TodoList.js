@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import FilterButton from "./FilterButton";
+import FilterContainer from "./FilterContainer";
 import Placeholder from "./Placeholder";
 import Todo from "./Todo";
-import TodoForm from "./TodoForm";
+import TodoInput from "./TodoInput";
 
 const FILTER_MAP = {
 	all: () => true,
@@ -13,7 +14,10 @@ const FILTER_MAP = {
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 const TodoList = () => {
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState(
+		JSON.parse(localStorage.getItem("todoList")) || []
+	);
+
 	const [filter, setFilter] = useState("all");
 
 	const addTodo = (todo) => {
@@ -21,38 +25,32 @@ const TodoList = () => {
 			return;
 		}
 		const newTodos = [todo, ...todos];
-
+		localStorage.setItem("todoList", JSON.stringify(newTodos));
 		setTodos(newTodos);
 	};
 
 	const completeTodo = (id) => {
 		let updatedTodos = todos.map((todo) => {
 			if (todo.id === id) {
-				todo.isComplete = !todo.isComplete;
+				todo.isCompleted = !todo.isCompleted;
 			}
 			return todo;
 		});
+		localStorage.setItem("todoList", JSON.stringify(updatedTodos));
 		setTodos(updatedTodos);
 	};
 
 	const removeTodo = (id) => {
 		const removedArr = [...todos].filter((todo) => todo.id !== id);
+		localStorage.setItem("todoList", JSON.stringify(removedArr));
 		setTodos(removedArr);
 	};
 
 	const clearCompleted = () => {
-		const removedArr = [...todos].filter((todo) => todo.isComplete !== true);
+		const removedArr = [...todos].filter((todo) => todo.isCompleted !== true);
+		localStorage.setItem("todoList", JSON.stringify(removedArr));
 		setTodos(removedArr);
 	};
-
-	const filterList = FILTER_NAMES.map((name) => (
-		<FilterButton
-			key={name}
-			name={name}
-			setFilter={setFilter}
-			isPressed={name === filter}
-		/>
-	));
 
 	const handleOnDragEnd = (result) => {
 		if (!result.destination) return;
@@ -65,7 +63,7 @@ const TodoList = () => {
 	return (
 		<main className='max-w-[550px] mx-auto w-full flex flex-col p-6 items-center mt-[-115px] '>
 			{/* Todos input */}
-			<TodoForm onSubmit={addTodo} />
+			<TodoInput onSubmit={addTodo} />
 
 			{/* Todos list */}
 			<DragDropContext onDragEnd={handleOnDragEnd}>
@@ -93,8 +91,8 @@ const TodoList = () => {
 			</DragDropContext>
 
 			{/* Todos info */}
-			<div className='dark:shadow-black/50 shadow-xl flex items-center h-full min-h-[50px] bg-lightGray100 dark:bg-darkGrayTodoBg px-4 w-full rounded-b-md'>
-				<div className='sm:text-lg text-xs text-lightGray400 dark:text-darkInputText flex items-center justify-between w-full'>
+			<div className=' shadow-shadowColor shadow-xl flex items-center h-full min-h-[50px] bg-bgTodo px-4 w-full rounded-b-md'>
+				<div className='sm:text-lg text-xs text-textColor flex items-center justify-between w-full'>
 					<p>
 						{todos.filter(FILTER_MAP[filter]).length === 0
 							? "No items left"
@@ -102,20 +100,14 @@ const TodoList = () => {
 					</p>
 					<p
 						onClick={clearCompleted}
-						className='cursor-pointer hover:dark:text-darkGray300Hover hover:text-lightGray500'>
+						className='cursor-pointer hover:text-hoverColor'>
 						Clear Completed
 					</p>
 				</div>
 			</div>
 
-			{/* Filter buttons */}
-			<div className='dark:shadow-black/50 shadow-2xl min-h-[50px] mt-4 justify-center w-full flex items-center bg-lightGray100 dark:bg-darkGrayTodoBg px-4 rounded-md gap-3 '>
-				{filterList}
-			</div>
-
-			<p className='px-4 w-full text-center sm:text-base text-sm dark:text-darkInputText text-lightGray400 mt-10'>
-				Drag and drop to reorder list
-			</p>
+			{/* Filter container */}
+			{/* <FilterContainer /> */}
 		</main>
 	);
 };

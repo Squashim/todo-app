@@ -4,7 +4,28 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 
+.light-theme {
+	--bg-main: hsl(0, 0%, 98%);
+	--bg-todo: hsl(0, 0%, 100%);
+	--text: hsl(235, 19%, 35%);
+	--hover: hsl(235, 19%, 35%);
+	--elements: hsl(236, 9%, 61%);
+	--shadow: rgba(89, 89, 89, 0.094);
+}
+
+.dark-theme {
+	--bg-main: hsl(235, 21%, 11%);
+	--bg-todo: hsl(235, 24%, 19%);
+	--text: hsl(234, 39%, 85%);
+	--hover: hsl(236, 33%, 92%);
+	--elements: hsl(233, 14%, 35%);
+	--shadow: rgba(0, 0, 0, 0.47);
+}
+
 body {
+	width: 100%;
+	height: 100vh;
 	font-family: "Josefin Sans", sans-serif;
 	font-size: 18px;
+	background-color: var(--bg-main);
 }

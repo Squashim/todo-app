@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<footer className='max-w-[550px] mx-auto text-xs w-full text-center dark:text-darkInputText text-lightGray500 mt-10'>
+		<footer className=' max-w-[550px] mx-auto text-xs w-full text-center text-textColor mt-10'>
 			Challenge by{" "}
 			<a
 				href='https://www.frontendmentor.io?ref=challenge'
