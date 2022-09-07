@@ -64,19 +64,21 @@ const TodoList = ({ todos, updateTodos, filter, completeTodo, removeTodo }) => {
 	};
 
 	return (
-		<DragDropContext onDragEnd={handleOnDragEnd}>
-			<Droppable droppableId='list'>
-				{(provided) => (
-					<div
-						className='w-full h-full'
-						{...provided.droppableProps}
-						ref={provided.innerRef}>
-						{renderedFilteredList()}
-						{provided.placeholder}
-					</div>
-				)}
-			</Droppable>
-		</DragDropContext>
+		<div className='min-h-[300px] flex flex-col justify-between w-full bg-bgTodo rounded-t-md shadow-xl shadow-shadowColor'>
+			<DragDropContext onDragEnd={handleOnDragEnd}>
+				<Droppable droppableId='list'>
+					{(provided) => (
+						<div
+							className='w-full h-full'
+							{...provided.droppableProps}
+							ref={provided.innerRef}>
+							{renderedFilteredList()}
+							{provided.placeholder}
+						</div>
+					)}
+				</Droppable>
+			</DragDropContext>
+		</div>
 	);
 };
 

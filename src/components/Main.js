@@ -5,6 +5,7 @@ import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 import TodosInfoContainer from "./TodosInfoContainer";
 import templateTodos from "../data/template.json";
+import FilterButton from "./FilterButton";
 
 const Main = () => {
 	const MY_TASKS = localStorage.getItem("todoList")
@@ -54,6 +55,23 @@ const Main = () => {
 		setTodos(updatedList);
 	};
 
+	const FILTER_MAP = {
+		all: () => true,
+		active: (todo) => !todo.isComplete,
+		completed: (todo) => todo.isComplete,
+	};
+
+	const FILTER_NAMES = Object.keys(FILTER_MAP);
+
+	const filterList = FILTER_NAMES.map((name) => (
+		<FilterButton
+			key={name}
+			name={name}
+			updateFilter={updateFilter}
+			isPressed={name === filter}
+		/>
+	));
+
 	return (
 		<main className='max-w-[550px] mx-auto w-full flex flex-col p-6 items-center mt-[-115px] '>
 			{/* Todos input */}
@@ -69,11 +87,22 @@ const Main = () => {
 				clearCompleted={clearCompleted}
 			/>
 
-			{/* Todos info */}
-			<TodosInfoContainer todos={todos} clearCompleted={clearCompleted} />
+			{/* Bottom panel */}
+			<div className='flex flex-col sm:hidden w-full'>
+				<TodosInfoContainer todos={todos} clearCompleted={clearCompleted} />
+				<FilterContainer filterList={filterList} />
+			</div>
 
-			{/* Filter container */}
-			<FilterContainer filter={filter} updateFilter={updateFilter} />
+			<div className='sm:flex hidden w-full'>
+				<TodosInfoContainer
+					todos={todos}
+					clearCompleted={clearCompleted}
+					filterList={filterList}
+				/>
+			</div>
+			<p className='px-4 w-full text-center sm:text-base text-sm text-elementsColor mt-10'>
+				Drag and drop to reorder list
+			</p>
 		</main>
 	);
 };
