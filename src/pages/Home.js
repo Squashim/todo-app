@@ -5,7 +5,7 @@ import Main from "../components/Main";
 
 const Home = () => {
 	const [theme, setTheme] = useState(
-		localStorage.getItem("theme") || "light-theme"
+		localStorage.getItem("theme") || "dark-theme"
 	);
 
 	useEffect(() => {

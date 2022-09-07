@@ -1,7 +1,7 @@
 import React from "react";
 import FilterButton from "./FilterButton";
 
-const FilterContainer = ({ filter, setFilter }) => {
+const FilterContainer = ({ filter, updateFilter }) => {
 	const FILTER_MAP = {
 		all: () => true,
 		active: (todo) => !todo.isComplete,
@@ -14,7 +14,7 @@ const FilterContainer = ({ filter, setFilter }) => {
 		<FilterButton
 			key={name}
 			name={name}
-			setFilter={setFilter}
+			updateFilter={updateFilter}
 			isPressed={name === filter}
 		/>
 	));

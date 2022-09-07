@@ -1,9 +1,9 @@
 import React from "react";
 
-const FilterButton = ({ name, isPressed, setFilter }) => {
+const FilterButton = ({ name, isPressed, updateFilter }) => {
 	return (
 		<button
-			onClick={() => setFilter(name)}
+			onClick={() => updateFilter(name)}
 			className={
 				isPressed
 					? "sm:text-lg capitalize font-bold cursor-pointer text-sm  text-primary"
